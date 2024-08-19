@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="/styles/output.css" />
+  </head>
+  <body class="flex h-screen bg-gray-100 font-sans">
+    <!-- Sidebar -->
+    <aside class="w-64 bg-gray-800 text-white flex flex-col">
+      <div class="p-6 text-2xl font-bold border-b border-gray-700">
+        Admin Panel
+      </div>
+      <nav class="flex-1 mt-6">
+        <ul class="space-y-2">
+          <li>
+            <a
+              href="index.html"
+              class="block px-4 py-2 text-gray-300 hover:bg-gray-700 hover:text-white transition duration-300"
+              >Dashboard</a
+            >
+          </li>
+          <li>
+            <a
+              href="orders.html"
+              class="block px-4 py-2 text-gray-300 hover:bg-gray-700 hover:text-white transition duration-300"
+              >Orders</a
+            >
+          </li>
+          <li>
+            <a
+              href="menu.html"
+              class="block px-4 py-2 text-gray-300 hover:bg-gray-700 hover:text-white transition duration-300"
+              >Menu Management</a
+            >
+          </li>
+          <li>
+            <a
+              href="users.html"
+              class="block px-4 py-2 text-gray-300 hover:bg-gray-700 hover:text-white transition duration-300"
+              >Users</a
+            >
+          </li>
+          <li>
+            <a
+              href="reports.html"
+              class="block px-4 py-2 text-gray-300 hover:bg-gray-700 hover:text-white transition duration-300"
+              >Reports</a
+            >
+          </li>
+          <li>
+            <a
+              href="settings.html"
+              class="block px-4 py-2 text-gray-300 hover:bg-gray-700 hover:text-white transition duration-300"
+              >Settings</a
+            >
+          </li>
+        </ul>
+      </nav>
+      <div class="p-4">
+        <button
+          class="bg-red-600 hover:bg-red-700 w-full py-2 rounded-lg text-white font-semibold transition duration-300"
+        >
+          Logout
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col">
+      <!-- Top Navigation Bar -->
+      <header class="bg-white shadow-md p-4 flex items-center justify-between">
+        <div class="text-2xl font-semibold text-gray-800">Dashboard</div>
+        <button
+          class="text-gray-600 hover:text-gray-800 transition duration-300"
+        >
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M15 19l-7-7 7-7"
+            />
+          </svg>
+        </button>
+      </header>
+
+      <!-- Main Content Area -->
+      <main class="flex-1 p-6 space-y-6">
+        <h1 class="text-3xl font-bold text-gray-800">Dashboard Overview</h1>
+
+        <!-- Overview Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div
+            class="bg-white p-6 shadow-lg rounded-lg flex flex-col justify-between"
+          >
+            <h2 class="text-lg font-semibold text-gray-800">Total Orders</h2>
+            <p class="text-3xl font-bold text-gray-600">120</p>
+          </div>
+          <div
+            class="bg-white p-6 shadow-lg rounded-lg flex flex-col justify-between"
+          >
+            <h2 class="text-lg font-semibold text-gray-800">Sales</h2>
+            <p class="text-3xl font-bold text-gray-600">$5,000</p>
+          </div>
+          <div
+            class="bg-white p-6 shadow-lg rounded-lg flex flex-col justify-between"
+          >
+            <h2 class="text-lg font-semibold text-gray-800">New Users</h2>
+            <p class="text-3xl font-bold text-gray-600">45</p>
+          </div>
+          <div
+            class="bg-white p-6 shadow-lg rounded-lg flex flex-col justify-between"
+          >
+            <h2 class="text-lg font-semibold text-gray-800">Pending Orders</h2>
+            <p class="text-3xl font-bold text-gray-600">15</p>
+          </div>
+        </div>
+
+        <!-- Main Content Section -->
+        <section class="bg-white p-6 shadow-lg rounded-lg">
+          <h2 class="text-2xl font-semibold text-gray-800 mb-4">
+            Recent Orders
+          </h2>
+          <!-- Table for Recent Orders -->
+          <div class="overflow-x-auto">
+            <table
+              class="min-w-full divide-y divide-gray-200 bg-white border border-gray-200"
+            >
+              <thead class="bg-gray-300">
+                <tr>
+                  <th
+                    scope="col"
+                    class="px-6 py-3 text-left text-xs font-bold text-balck uppercase tracking-wider border-b border-gray-200"
+                  >
+                    Order ID
+                  </th>
+                  <th
+                    scope="col"
+                    class="px-6 py-3 text-left text-xs font-bold text-balck uppercase tracking-wider border-b border-gray-200"
+                  >
+                    User
+                  </th>
+                  <th
+                    scope="col"
+                    class="px-6 py-3 text-left text-xs font-bold text-balck uppercase tracking-wider border-b border-gray-200"
+                  >
+                    Vendor
+                  </th>
+                  <th
+                    scope="col"
+                    class="px-6 py-3 text-left text-xs font-bold text-balck uppercase tracking-wider border-b border-gray-200"
+                  >
+                    Amount
+                  </th>
+                  <th
+                    scope="col"
+                    class="px-6 py-3 text-left text-xs font-bold text-balck uppercase tracking-wider border-b border-gray-200"
+                  >
+                    Status
+                  </th>
+                  <th
+                    scope="col"
+                    class="px-6 py-3 text-left text-xs font-bold text-balck uppercase tracking-wider border-b border-gray-200"
+                  >
+                    Date
+                  </th>
+                  <th scope="col" class="px-6 py-3"></th>
+                </tr>
+              </thead>
+              <tbody class="bg-white divide-y divide-gray-200">
+                <!-- Example rows, replace with dynamic data -->
+                <tr class="hover:bg-gray-50">
+                  <td
+                    class="px-6 py-4 whitespace-nowrap border-b border-gray-200"
+                  >
+                    1
+                  </td>
+                  <td
+                    class="px-6 py-4 whitespace-nowrap border-b border-gray-200"
+                  >
+                    John Doe
+                  </td>
+                  <td
+                    class="px-6 py-4 whitespace-nowrap border-b border-gray-200"
+                  >
+                    Vendor A
+                  </td>
+                  <td
+                    class="px-6 py-4 whitespace-nowrap border-b border-gray-200"
+                  >
+                    $120.00
+                  </td>
+                  <td
+                    class="px-6 py-4 whitespace-nowrap border-b border-gray-200"
+                  >
+                    Completed
+                  </td>
+                  <td
+                    class="px-6 py-4 whitespace-nowrap border-b border-gray-200"
+                  >
+                    2024-08-20
+                  </td>
+                  <td
+                    class="px-6 py-4 whitespace-nowrap text-right border-b border-gray-200"
+                  >
+                    <a href="#" class="text-blue-600 hover:text-blue-800"
+                      >View</a
+                    >
+                  </td>
+                </tr>
+                <!-- Repeat rows as needed -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
