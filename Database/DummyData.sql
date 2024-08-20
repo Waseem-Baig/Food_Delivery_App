@@ -1,16 +1,16 @@
 USE FOODAPPS;
 -- Insert into USER table with SHA1 encrypted passwords
 INSERT INTO USER (NAME, ADDRESS, USERNAME, EMAIL, PASSWORD) VALUES
-('Alice', '123 Main St', 'alice123', 'alice@example.com', SHA1('password1')),
-('Bob', '456 Elm St', 'bob456', 'bob@example.com', SHA1('password2')),
-('Charlie', '789 Oak St', 'charlie789', 'charlie@example.com', SHA1('password3')),
-('David', '101 Pine St', 'david101', 'david@example.com', SHA1('password4')),
-('Eva', '202 Maple St', 'eva202', 'eva@example.com', SHA1('password5')),
-('Frank', '303 Birch St', 'frank303', 'frank@example.com', SHA1('password6')),
-('Grace', '404 Cedar St', 'grace404', 'grace@example.com', SHA1('password7')),
-('Hannah', '505 Walnut St', 'hannah505', 'hannah@example.com', SHA1('password8')),
-('Ivy', '606 Cherry St', 'ivy606', 'ivy@example.com', SHA1('password9')),
-('Jack', '707 Willow St', 'jack707', 'jack@example.com', SHA1('password10'));
+('Alice', '123 Main St', 'alice123', 'alice@example.com', SHA1('password1'),0),
+('Bob', '456 Elm St', 'bob456', 'bob@example.com', SHA1('password2'),1),
+('Charlie', '789 Oak St', 'charlie789', 'charlie@example.com', SHA1('password3'),0),
+('David', '101 Pine St', 'david101', 'david@example.com', SHA1('password4'),1),
+('Eva', '202 Maple St', 'eva202', 'eva@example.com', SHA1('password5'),1),
+('Frank', '303 Birch St', 'frank303', 'frank@example.com', SHA1('password6'),1),
+('Grace', '404 Cedar St', 'grace404', 'grace@example.com', SHA1('password7'),1),
+('Hannah', '505 Walnut St', 'hannah505', 'hannah@example.com', SHA1('password8'),1),
+('Ivy', '606 Cherry St', 'ivy606', 'ivy@example.com', SHA1('password9'),1),
+('Jack', '707 Willow St', 'jack707', 'jack@example.com', SHA1('password10'),1);
 -- Insert into VENDOR table
 
 INSERT INTO VENDOR (NAME, ADDRESS, RATING) VALUES
