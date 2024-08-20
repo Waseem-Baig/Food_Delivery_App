@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Orders - Admin Panel</title>
+    <link href="/styles/output.css" rel="stylesheet" />
+  </head>
+  <body class="flex h-screen bg-gray-100">
+    <!-- Sidebar -->
+    <aside class="w-64 bg-gray-800 text-white flex flex-col">
+      <div class="p-6 text-2xl font-bold border-b border-gray-700">
+        Admin Panel
+      </div>
+      <nav class="flex-1 mt-6">
+        <ul class="space-y-2">
+          <li>
+            <a
+              href="index.html"
+              class="block px-4 py-2 text-gray-300 hover:bg-gray-700 hover:text-white transition duration-300"
+              >Dashboard</a
+            >
+          </li>
+          <li>
+            <a
+              href="orders.html"
+              class="block px-4 py-2 text-gray-300 bg-gray-700 hover:bg-gray-600 hover:text-white transition duration-300"
+              >Orders</a
+            >
+          </li>
+          <li>
+            <a
+              href="menu.html"
+              class="block px-4 py-2 text-gray-300 hover:bg-gray-700 hover:text-white transition duration-300"
+              >Menu Management</a
+            >
+          </li>
+          <li>
+            <a
+              href="users.html"
+              class="block px-4 py-2 text-gray-300 hover:bg-gray-700 hover:text-white transition duration-300"
+              >Users</a
+            >
+          </li>
+          <li>
+            <a
+              href="reports.html"
+              class="block px-4 py-2 text-gray-300 hover:bg-gray-700 hover:text-white transition duration-300"
+              >Reports</a
+            >
+          </li>
+          <li>
+            <a
+              href="settings.html"
+              class="block px-4 py-2 text-gray-300 hover:bg-gray-700 hover:text-white transition duration-300"
+              >Settings</a
+            >
+          </li>
+        </ul>
+      </nav>
+      <div class="p-4">
+        <button
+          class="bg-red-600 hover:bg-red-700 w-full py-2 rounded-lg text-white font-semibold transition duration-300"
+        >
+          Logout
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col">
+      <!-- Top Navigation Bar -->
+      <header class="bg-white shadow-md p-4 flex items-center justify-between">
+        <div class="text-2xl font-semibold text-gray-800">Orders</div>
+        <button
+          class="text-gray-600 hover:text-gray-800 transition duration-300"
+        >
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M15 19l-7-7 7-7"
+            />
+          </svg>
+        </button>
+      </header>
+
+      <!-- Main Content Area -->
+      <main class="flex-1 p-6 space-y-6">
+        <h1 class="text-3xl font-bold text-gray-800">Orders List</h1>
+
+        <!-- Orders Table -->
+        <section class="bg-white p-6 shadow-lg rounded-lg">
+          <div class="overflow-x-auto">
+            <table
+              class="min-w-full divide-y divide-gray-200 border border-gray-200"
+            >
+              <thead class="bg-gray-300">
+                <tr>
+                  <th
+                    class="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider"
+                  >
+                    Order ID
+                  </th>
+                  <th
+                    class="px-6 py-3 text-left text-xs font-bold text-balck uppercase tracking-wider"
+                  >
+                    User
+                  </th>
+                  <th
+                    class="px-6 py-3 text-left text-xs font-bold text-balck uppercase tracking-wider"
+                  >
+                    Vendor
+                  </th>
+                  <th
+                    class="px-6 py-3 text-left text-xs font-bold text-balck uppercase tracking-wider"
+                  >
+                    Amount
+                  </th>
+                  <th
+                    class="px-6 py-3 text-left text-xs font-bold text-balck uppercase tracking-wider"
+                  >
+                    Status
+                  </th>
+                  <th
+                    class="px-6 py-3 text-left text-xs font-bold text-balck uppercase tracking-wider"
+                  >
+                    Date
+                  </th>
+                  <th class="px-6 py-3"></th>
+                </tr>
+              </thead>
+              <tbody class="bg-white divide-y divide-gray-200">
+                <!-- Example rows, replace with dynamic data -->
+                <tr class="bg-gray-50 hover:bg-gray-100">
+                  <td class="px-6 py-4 whitespace-nowrap">1</td>
+                  <td class="px-6 py-4 whitespace-nowrap">John Doe</td>
+                  <td class="px-6 py-4 whitespace-nowrap">Vendor A</td>
+                  <td class="px-6 py-4 whitespace-nowrap">$120.00</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-green-600">
+                    Completed
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap">2024-08-20</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-right">
+                    <button
+                      class="bg-blue-600 hover:bg-blue-700 text-white py-1 px-3 rounded-lg w-[5vw]"
+                    >
+                      View
+                    </button>
+                  </td>
+                </tr>
+                <tr class="bg-white hover:bg-gray-100">
+                  <td class="px-6 py-4 whitespace-nowrap">2</td>
+                  <td class="px-6 py-4 whitespace-nowrap">Jane Smith</td>
+                  <td class="px-6 py-4 whitespace-nowrap">Vendor B</td>
+                  <td class="px-6 py-4 whitespace-nowrap">$250.00</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-yellow-600">
+                    Pending
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap">2024-08-21</td>
+                  <td class="px-6 py-4 whitespace-nowrap text-right">
+                    <button
+                      class="bg-blue-600 hover:bg-blue-700 text-white py-1 px-3 rounded-lg w-[5vw]"
+                    >
+                      View
+                    </button>
+                  </td>
+                </tr>
+                <!-- Repeat rows as needed -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
