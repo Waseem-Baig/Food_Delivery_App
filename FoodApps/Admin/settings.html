@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Settings - Admin Panel</title>
+    <link href="/styles/output.css" rel="stylesheet" />
+  </head>
+  <body class="flex h-screen bg-gray-100">
+    <!-- Sidebar -->
+    <aside class="w-64 bg-gray-800 text-white flex flex-col">
+      <div class="p-6 text-2xl font-bold border-b border-gray-700">
+        Admin Panel
+      </div>
+      <nav class="flex-1 mt-6">
+        <ul class="space-y-2">
+          <li>
+            <a
+              href="index.html"
+              class="block px-4 py-2 text-gray-300 hover:bg-gray-700 hover:text-white transition duration-300"
+              >Dashboard</a
+            >
+          </li>
+          <li>
+            <a
+              href="orders.html"
+              class="block px-4 py-2 text-gray-300 hover:bg-gray-700 hover:text-white transition duration-300"
+              >Orders</a
+            >
+          </li>
+          <li>
+            <a
+              href="menu.html"
+              class="block px-4 py-2 text-gray-300 hover:bg-gray-700 hover:text-white transition duration-300"
+              >Menu Management</a
+            >
+          </li>
+          <li>
+            <a
+              href="users.html"
+              class="block px-4 py-2 text-gray-300 hover:bg-gray-700 hover:text-white transition duration-300"
+              >Users</a
+            >
+          </li>
+          <li>
+            <a
+              href="reports.html"
+              class="block px-4 py-2 text-gray-300 hover:bg-gray-700 hover:text-white transition duration-300"
+              >Reports</a
+            >
+          </li>
+          <li>
+            <a
+              href="settings.html"
+              class="block px-4 py-2 text-gray-300 bg-gray-700 hover:bg-gray-600 hover:text-white transition duration-300"
+              >Settings</a
+            >
+          </li>
+        </ul>
+      </nav>
+      <div class="p-4">
+        <button
+          class="bg-red-600 hover:bg-red-700 w-full py-2 rounded-lg text-white font-semibold transition duration-300"
+        >
+          Logout
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col">
+      <!-- Top Navigation Bar -->
+      <header class="bg-white shadow-md p-4 flex items-center justify-between">
+        <div class="text-2xl font-semibold text-gray-800">Settings</div>
+      </header>
+
+      <!-- Main Content Area -->
+      <main class="flex-1 p-6 space-y-6">
+        <!-- General Settings -->
+        <section class="bg-white p-6 shadow-lg rounded-lg">
+          <h2 class="text-2xl font-semibold text-gray-800 mb-4">
+            General Settings
+          </h2>
+          <form id="settings-form">
+            <div class="space-y-4">
+              <div class="flex flex-col">
+                <label
+                  for="site-name"
+                  class="text-sm font-medium text-gray-700 mb-1"
+                  >Site Name</label
+                >
+                <input
+                  type="text"
+                  id="site-name"
+                  class="block w-full border border-gray-300 rounded-lg shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 sm:text-sm px-3 py-2"
+                  placeholder="Enter site name"
+                  required
+                />
+              </div>
+
+              <div class="flex flex-col">
+                <label
+                  for="site-email"
+                  class="text-sm font-medium text-gray-700 mb-1"
+                  >Site Email</label
+                >
+                <input
+                  type="email"
+                  id="site-email"
+                  class="block w-full border border-gray-300 rounded-lg shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 sm:text-sm px-3 py-2"
+                  placeholder="Enter site email"
+                  required
+                />
+              </div>
+
+              <div class="flex flex-col">
+                <label
+                  for="timezone"
+                  class="text-sm font-medium text-gray-700 mb-1"
+                  >Timezone</label
+                >
+                <select
+                  id="timezone"
+                  class="block w-full border border-gray-300 rounded-lg shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 sm:text-sm px-3 py-2"
+                  required
+                >
+                  <option>UTC</option>
+                  <option>America/New_York</option>
+                  <option>Europe/London</option>
+                  <option>Asia/Tokyo</option>
+                  <!-- Add more options as needed -->
+                </select>
+              </div>
+            </div>
+
+            <div class="mt-6 flex justify-end">
+              <button
+                type="submit"
+                class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-6 rounded-lg font-semibold transition duration-300"
+              >
+                Save Settings
+              </button>
+            </div>
+          </form>
+        </section>
+
+        <!-- Other Settings Sections -->
+        <!-- Add additional sections here as needed -->
+      </main>
+    </div>
+
+    <script>
+      document
+        .getElementById("settings-form")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // Prevent default form submission
+
+          // Get form values
+          const siteName = document.getElementById("site-name").value;
+          const siteEmail = document.getElementById("site-email").value;
+          const timezone = document.getElementById("timezone").value;
+
+          // Example: Log the settings data to the console (replace this with your actual logic)
+          console.log("Updated Settings:", {
+            siteName,
+            siteEmail,
+            timezone,
+          });
+
+          // Optionally, send the data to the server or update your data source here
+          // Example: Send data to a server using fetch (uncomment and adjust URL and options)
+          /*
+        fetch('/api/update-settings', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ siteName, siteEmail, timezone })
+        })
+        .then(response => response.json())
+        .then(data => {
+          console.log('Settings updated:', data);
+          // Handle success (e.g., update UI or notify user)
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          // Handle error
+        });
+        */
+        });
+    </script>
+  </body>
+</html>
