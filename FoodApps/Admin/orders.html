@@ -5,6 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Orders - Admin Panel</title>
     <link href="/styles/output.css" rel="stylesheet" />
+    <style>
+      /* Ensure that the main content area takes up the remaining space */
+      .main-content {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+
+      /* Ensure the table takes the available space and pushes pagination to the bottom */
+      .table-container {
+        flex: 1;
+        overflow-x: auto;
+      }
+
+      /* Adjust table styling as needed */
+      .pagination {
+        margin-top: 1.5rem;
+        display: flex;
+        justify-content: space-between;
+      }
+    </style>
   </head>
   <body class="flex h-screen bg-gray-100">
     <!-- Sidebar -->
@@ -92,11 +113,11 @@
       </header>
 
       <!-- Main Content Area -->
-      <main class="flex-1 p-6 space-y-6">
-        <h1 class="text-3xl font-bold text-gray-800">Orders List</h1>
+      <main class="main-content p-6">
+        <h1 class="text-3xl font-bold text-gray-800 mb-2">Orders List</h1>
 
         <!-- Orders Table -->
-        <section class="bg-white p-6 shadow-lg rounded-lg">
+        <section class="bg-white p-6 shadow-lg rounded-lg table-container">
           <div class="overflow-x-auto">
             <table
               class="min-w-full divide-y divide-gray-200 border border-gray-200"
@@ -155,61 +176,44 @@
                     </button>
                   </td>
                 </tr>
-                <tr class="bg-white hover:bg-gray-100">
-                  <td class="px-6 py-4 whitespace-nowrap">2</td>
-                  <td class="px-6 py-4 whitespace-nowrap">Jane Smith</td>
-                  <td class="px-6 py-4 whitespace-nowrap">Vendor B</td>
-                  <td class="px-6 py-4 whitespace-nowrap">$250.00</td>
-                  <td class="px-6 py-4 whitespace-nowrap text-yellow-600">
-                    Pending
-                  </td>
-                  <td class="px-6 py-4 whitespace-nowrap">2024-08-21</td>
-                  <td class="px-6 py-4 whitespace-nowrap text-right">
-                    <button
-                      class="bg-blue-600 hover:bg-blue-700 text-white py-1 px-3 rounded-lg w-[5vw]"
-                    >
-                      View
-                    </button>
-                  </td>
-                </tr>
                 <!-- Repeat rows as needed -->
               </tbody>
             </table>
           </div>
-
-          <!-- Pagination -->
-          <div class="mt-6 flex items-center justify-between">
-            <button
-              class="bg-gray-300 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-400 transition duration-300 mr-2"
-              disabled
-            >
-              &laquo; Previous
-            </button>
-            <div class="flex space-x-4">
-              <button
-                class="bg-gray-300 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-400 transition duration-300 mr-2"
-              >
-                1
-              </button>
-              <button
-                class="bg-gray-300 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-400 transition duration-300 mr-2"
-              >
-                2
-              </button>
-              <button
-                class="bg-gray-300 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-400 transition duration-300"
-              >
-                3
-              </button>
-              <!-- Add more page numbers as needed -->
-            </div>
-            <button
-              class="bg-gray-300 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-400 transition duration-300 ml-2 mr-2"
-            >
-              Next &raquo;
-            </button>
-          </div>
         </section>
+
+        <!-- Pagination -->
+        <div class="pagination">
+          <button
+            class="bg-gray-300 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-400 transition duration-300 mr-2"
+            disabled
+          >
+            &laquo; Previous
+          </button>
+          <div class="flex space-x-4">
+            <button
+              class="bg-gray-300 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-400 mr-2 transition duration-300"
+            >
+              1
+            </button>
+            <button
+              class="bg-gray-300 text-gray-800 mr-2 px-4 py-2 rounded-lg hover:bg-gray-400 transition duration-300"
+            >
+              2
+            </button>
+            <button
+              class="bg-gray-300 text-gray-800 px-4 mr-2 py-2 rounded-lg hover:bg-gray-400 transition duration-300"
+            >
+              3
+            </button>
+            <!-- Add more page numbers as needed -->
+          </div>
+          <button
+            class="bg-gray-300 ml-2 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-400 transition duration-300"
+          >
+            Next &raquo;
+          </button>
+        </div>
       </main>
     </div>
   </body>
