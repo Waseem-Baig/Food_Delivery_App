@@ -1,14 +1,36 @@
-<?php
-  include "auth.php";
-  include "config.php";
-?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Users - Admin Panel</title>
-    <link href="./styles/output.css" rel="stylesheet" />
+    <title>User Management - Admin Panel</title>
+    <link href="/styles/output.css" rel="stylesheet" />
+    <style>
+      .main-content {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+      .table-container {
+        flex: 1;
+        overflow-x: auto;
+      }
+      .pagination {
+        margin-top: 1.5rem;
+        display: flex;
+        justify-content: space-between;
+      }
+      .form-modal {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 50;
+        display: none;
+      }
+    </style>
   </head>
   <body class="flex h-screen bg-gray-100">
     <!-- Sidebar -->
@@ -43,7 +65,7 @@
             <a
               href="users.html"
               class="block px-4 py-2 text-gray-300 bg-gray-700 hover:bg-gray-600 hover:text-white transition duration-300"
-              >Users</a
+              >User Management</a
             >
           </li>
           <li>
@@ -63,13 +85,11 @@
         </ul>
       </nav>
       <div class="p-4">
-        <!-- I added form tag to button for logout -->
-        <form action="logout.php" method="post">
         <button
           class="bg-red-600 hover:bg-red-700 w-full py-2 rounded-lg text-white font-semibold transition duration-300"
-        type="submit">
+        >
           Logout
-        </button></form>
+        </button>
       </div>
     </aside>
 
@@ -77,39 +97,19 @@
     <div class="flex-1 flex flex-col">
       <!-- Top Navigation Bar -->
       <header class="bg-white shadow-md p-4 flex items-center justify-between">
-        <div class="text-2xl font-semibold text-gray-800">Users</div>
+        <div class="text-2xl font-bold text-gray-800">User Management</div>
         <button
-          class="text-gray-600 hover:text-gray-800 transition duration-300"
+          class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg font-semibold transition duration-300"
+          onclick="document.getElementById('add-user-modal').classList.remove('hidden')"
         >
-          <svg
-            class="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M15 19l-7-7 7-7"
-            />
-          </svg>
+          Add New User
         </button>
       </header>
 
       <!-- Main Content Area -->
-      <main class="flex-1 p-6 space-y-6">
-        <!-- Users Overview -->
-        <section class="bg-white p-6 shadow-lg rounded-lg">
-          <div class="flex items-center justify-between mb-4">
-            <h1 class="text-3xl font-bold text-gray-800">Users</h1>
-            <button
-              class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg font-semibold transition duration-300"
-              onclick="document.getElementById('add-user-modal').classList.remove('hidden')"
-            >
-              Add New User
-            </button>
-          </div>
+      <main class="main-content p-6">
+        <!-- User Overview -->
+        <section class="bg-white p-6 shadow-lg rounded-lg table-container">
           <div class="overflow-x-auto">
             <table
               class="min-w-full divide-y divide-gray-200 border border-gray-200"
@@ -119,7 +119,7 @@
                   <th
                     class="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider"
                   >
-                    UserName
+                    User ID
                   </th>
                   <th
                     class="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider"
@@ -139,14 +139,9 @@
                   <th
                     class="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider"
                   >
-                    Operations
-                  </th>
-                  <!-- <th
-                    class="px-6 py-3 text-left text-xs font-bold text-black uppercase tracking-wider"
-                  >
                     Status
-                  </th> -->
-                  <!-- <th class="px-6 py-3"></th> -->
+                  </th>
+                  <th class="px-6 py-3"></th>
                 </tr>
               </thead>
               <tbody class="bg-white divide-y divide-gray-200">
@@ -154,12 +149,15 @@
                   $sqlfetch="SELECT * FROM USER ORDER BY USERID DESC";
                   $result=mysqli_query($conn,$sqlfetch)or die("Connection Failed");
                   if(mysqli_num_rows($result)>0){
-                    while($row=mysqli_fetch_assoc($result)){
-                ?>
+                while($row=mysqli_fetch_assoc($result)){ ?>
                 <!-- Example rows, replace with dynamic data -->
                 <tr class="bg-gray-50 hover:bg-gray-100">
-                  <td class="px-6 py-4 whitespace-nowrap"><?php echo $row['USERNAME']; ?></td> 
-                  <td class="px-6 py-4 whitespace-nowrap"><?php echo $row['NAME']; ?></td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <?php echo $row['USERNAME']; ?>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <?php echo $row['NAME']; ?>
+                  </td>
                   <td class="px-6 py-4 whitespace-nowrap">
                     <?php echo $row['EMAIL']; ?>
                   </td>
@@ -169,14 +167,16 @@
                       $rol="Admin";
                     }
                   ?>
-                  <td class="px-6 py-4 whitespace-nowrap"><?php echo $rol; ?></td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <?php echo $rol; ?>
+                  </td>
                   <!-- <td class="px-6 py-4 whitespace-nowrap text-green-600">
                     Active
                   </td> -->
                   <td class="px-6 py-4 whitespace-nowrap text-right">
-                    <a href="edit.php?id=<?php echo $row['USERID'];?>"
+                    <a
+                      href="edit.php?id=<?php echo $row['USERID'];?>"
                       class="bg-blue-600 hover:bg-blue-700 text-white py-1 px-3 rounded-lg"
-                     
                     >
                       Edit
                     </a>
@@ -189,16 +189,48 @@
                   </td>
                 </tr>
                 <?php
-                }
-                }
-                else{
-                  echo "<pre>No Data to Fetch!!</pre>";
-                }
-                 ?>
-              </tbody>
+              }
+              }
+              else{
+                echo "<pre>No Data to Fetch!!</pre>";
+              }
+               ?>
+            </tbody>
             </table>
           </div>
         </section>
+
+        <!-- Pagination -->
+        <div class="pagination">
+          <button
+            class="bg-gray-300 mr-2 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-400 transition duration-300"
+            disabled
+          >
+            &laquo; Previous
+          </button>
+          <div class="flex space-x-4">
+            <button
+              class="bg-gray-300 mr-2 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-400 transition duration-300"
+            >
+              1
+            </button>
+            <button
+              class="bg-gray-300 mr-2 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-400 transition duration-300"
+            >
+              2
+            </button>
+            <button
+              class="bg-gray-300 mr-2 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-400 transition duration-300"
+            >
+              3
+            </button>
+          </div>
+          <button
+            class="bg-gray-300 ml-2 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-400 transition duration-300"
+          >
+            Next &raquo;
+          </button>
+        </div>
       </main>
     </div>
 
@@ -223,35 +255,34 @@
               <label
                 for="user-name"
                 class="text-sm font-medium text-gray-700 mb-1"
-                >Name</label
+                >User Name</label
               >
               <input
                 type="text"
                 id="user-name"
-                name="name"
                 class="block w-full border border-gray-300 rounded-lg shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 sm:text-sm px-3 py-2"
-                placeholder="Enter name"
+                placeholder="Enter user name"
                 required
               />
             </div>
             <?php # Did not write the username input and Address input as well?>
-            <!-- start of new code -->
+
             <div class="flex flex-col">
               <label
-                for="username"
+                for="user-email"
                 class="text-sm font-medium text-gray-700 mb-1"
-                >Username</label
+                >Email</label
               >
               <input
-                type="text"
-                name="username"
+                type="email"
                 id="user-email"
-                class="block w-full border border-gray-300 rounded-lg shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 sm:text-sm px-3 py-2"
-                placeholder="Enter username "
+                class="block w-full border border-gray-300 rounded-lg shadow focus:border-blue-500 focus:ring-1 focus:ring-blue-500 sm:text-sm px-3 py-2"
+                placeholder="Enter email"
                 required
               />
             </div>
-            <div class="flex flex-col">
+
+            <div class="flex flex-col"></div>
               <label
                 for="address"
                 class="text-sm font-medium text-gray-700 mb-1"
@@ -266,22 +297,6 @@
                 required
               />
             </div>
-            <!-- End of new code -->
-            <div class="flex flex-col">
-              <label
-                for="user-email"
-                class="text-sm font-medium text-gray-700 mb-1"
-                >Email</label
-              >
-              <input
-                type="email"
-                name="email"
-                id="user-email"
-                class="block w-full border border-gray-300 rounded-lg shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 sm:text-sm px-3 py-2"
-                placeholder="Enter user email"
-                required
-              />
-            </div>
 
             <div class="flex flex-col">
               <label
@@ -289,59 +304,45 @@
                 class="text-sm font-medium text-gray-700 mb-1"
                 >Role</label
               >
-              <?php # Getting the Data from selection?>
               <select
                 id="user-role"
-                name="role"
                 class="block w-full border border-gray-300 rounded-lg shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 sm:text-sm px-3 py-2"
-                required
               >
-                <option value="0">Admin</option>
-                <option value="1">Customer</option>
-                <!-- <option>Vendor</option> -->
+                <option value="admin">Admin</option>
+                <option value="editor">Customer</option>
+                <option value="viewer">Vendor</option>
               </select>
             </div>
-            <?php # Unwanted Garbage ?>
-            <!-- <div class="flex flex-col">
+
+            <div class="flex flex-col">
               <label
                 for="user-status"
                 class="text-sm font-medium text-gray-700 mb-1"
                 >Status</label
-              > -->
-              
-              <!-- <select
+              >
+              <select
                 id="user-status"
                 class="block w-full border border-gray-300 rounded-lg shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 sm:text-sm px-3 py-2"
-                required
               >
-                <option>Active</option>
-                <option>Inactive</option>
-              </select> -->
-            <!-- </div> -->
-            <div class="flex flex-col">
-              <label
-                for="user-password"
-                class="text-sm font-medium text-gray-700 mb-1"
-                >Password</label
-              >
-              <input
-                type="password"
-                name="password"
-                id="user-email"
-                class="block w-full border border-gray-300 rounded-lg shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 sm:text-sm px-3 py-2"
-                placeholder="Enter user password"
-                required
-              />
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
+              </select>
             </div>
           </div>
 
           <div class="mt-6 flex justify-end">
             <button
-              name="adduser"
-              type="submit"
-              class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-6 rounded-lg font-semibold transition duration-300"
+              type="button"
+              class="bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 rounded-lg mr-2"
+              onclick="document.getElementById('add-user-modal').classList.add('hidden')"
             >
-              Save
+              Cancel
+            </button>
+            <button
+              type="submit"
+              class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg"
+            >
+              Save User
             </button>
           </div>
         </form>
