@@ -200,39 +200,43 @@
           </div>
         </section>
 
-        <!-- Pagination -->
-        <div class="pagination">
-          <button
-            class="bg-gray-300 mr-2 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-400 transition duration-300"
-            disabled
-          >
-            &laquo; Previous
-          </button>
-          <div class="flex space-x-4">
-            <button
-              class="bg-gray-300 mr-2 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-400 transition duration-300"
-            >
-              1
-            </button>
-            <button
-              class="bg-gray-300 mr-2 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-400 transition duration-300"
-            >
-              2
-            </button>
-            <button
-              class="bg-gray-300 mr-2 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-400 transition duration-300"
-            >
-              3
-            </button>
-          </div>
-          <button
-            class="bg-gray-300 ml-2 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-400 transition duration-300"
-          >
-            Next &raquo;
-          </button>
-        </div>
-      </main>
-    </div>
+<!-- Pagination -->
+<div class="pagination">
+  <a
+    href="#"
+    class="bg-gray-300 mr-2 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-400 transition duration-300"
+    aria-disabled="true"
+  >
+    &laquo; Previous
+  </a>
+  <div class="flex space-x-4">
+    <a
+      href="#"
+      class="bg-gray-300 mr-2 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-400 transition duration-300"
+    >
+      1
+    </a>
+    <a
+      href="#"
+      class="bg-gray-300 mr-2 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-400 transition duration-300"
+    >
+      2
+    </a>
+    <a
+      href="#"
+      class="bg-gray-300 mr-2 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-400 transition duration-300"
+    >
+      3
+    </a>
+  </div>
+  <a
+    href="#"
+    class="bg-gray-300 ml-2 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-400 transition duration-300"
+  >
+    Next &raquo;
+  </a>
+</div>
+
 
     <!-- Add/Edit User Modal -->
     <div
