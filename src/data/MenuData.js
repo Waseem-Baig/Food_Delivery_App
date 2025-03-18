@@ -1,0 +1,77 @@
+const menuData = [
+  {
+    id: "1",
+    name: "Paneer Butter Masala",
+    image: "/images/item-1.jpeg",
+    price: 250,
+    description:
+      "Creamy and rich paneer butter masala made with Indian spices.",
+    category: "Indian",
+  },
+  {
+    id: "2",
+    name: "Chicken Biryani",
+    image: "/images/item-2.jpeg",
+    price: 300,
+    description: "Aromatic basmati rice cooked with chicken and Indian spices.",
+    category: "Indian",
+  },
+  {
+    id: "3",
+    name: "Masala Dosa",
+    image: "/images/item-3.jpeg",
+    price: 200,
+    description: "Crispy dosa filled with spicy potato masala.",
+    category: "South Indian",
+  },
+  {
+    id: "4",
+    name: "Chole Bhature",
+    image: "/images/item-4.jpeg",
+    price: 150,
+    description: "Spicy chickpea curry served with deep-fried bread.",
+    category: "North Indian",
+  },
+  {
+    id: "5",
+    name: "Hyderabadi Dum Biryani",
+    image: "/images/item-5.jpeg",
+    price: 350,
+    description: "Layered and slow-cooked biryani with rich flavors.",
+    category: "Indian",
+  },
+  {
+    id: "6",
+    name: "Rogan Josh",
+    image: "/images/item-6.jpeg",
+    price: 400,
+    description: "Tender lamb cooked in a flavorful Kashmiri curry.",
+    category: "Kashmiri",
+  },
+  {
+    id: "7",
+    name: "Dhokla",
+    image: "/images/item-7.jpeg",
+    price: 100,
+    description: "Soft and spongy steamed gram flour cake.",
+    category: "Gujarati",
+  },
+  {
+    id: "8",
+    name: "Butter Chicken",
+    image: "/images/item-8.jpeg",
+    price: 350,
+    description: "Rich and creamy butter chicken cooked with spices.",
+    category: "Indian",
+  },
+  {
+    id: "9",
+    name: "Vada Pav",
+    image: "/images/item-9.jpeg",
+    price: 50,
+    description: "Spicy potato fritter served in a bread bun.",
+    category: "Maharashtrian",
+  },
+];
+
+export default menuData;
